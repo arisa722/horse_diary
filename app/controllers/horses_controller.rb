@@ -2,6 +2,7 @@ class HorsesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @horses = current_user.horses
   end
 
   def show
