@@ -35,6 +35,12 @@ class HorsesController < ApplicationController
     end
   end
 
+  def destroy
+    @horse = current_user.horses.find(params[:id])
+    @horse.destroy
+    redirect_to horses_path, notice: "馬を削除しました。", status: :see_other
+  end
+
   private
 
   def horse_params
