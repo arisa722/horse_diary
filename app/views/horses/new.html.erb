@@ -1,35 +1,5 @@
 <h1>馬の登録</h1>
 
-<%= form_with model: @horse do |f| %>
-  <% if @horse.errors.any? %>
-    <ul>
-      <% @horse.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
-  <div>
-    <%= f.label :name, "名前" %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div>
-    <%= f.label :color_id, "毛色" %>
-    <%= f.collection_select :color_id, Color.all, :id, :name, include_blank: "選択してください" %>
-  </div>
-
-  <div>
-    <%= f.label :personality, "性格" %>
-    <%= f.text_area :personality %>
-  </div>
-
-  <div>
-    <%= f.label :memo, "メモ" %>
-    <%= f.text_area :memo %>
-  </div>
-
-  <%= f.submit "保存" %>
-<% end %>
+<%= render "form", horse: @horse %>
 
 <%= link_to "戻る", horses_path %>
