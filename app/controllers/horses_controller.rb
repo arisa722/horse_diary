@@ -1,12 +1,12 @@
 class HorsesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_horse, only: [:show, :edit, :update, :destroy]
 
   def index
     @horses = current_user.horses
   end
 
   def show
-    @horse = current_user.horses.find(params[:id])
   end
 
   def new
@@ -23,11 +23,9 @@ class HorsesController < ApplicationController
   end
 
   def edit
-    @horse = current_user.horses.find(params[:id])
   end
 
   def update
-    @horse = current_user.horses.find(params[:id])
     if @horse.update(horse_params)
       redirect_to horse_path(@horse), notice: "馬の情報を更新しました。"
     else
@@ -36,12 +34,15 @@ class HorsesController < ApplicationController
   end
 
   def destroy
-    @horse = current_user.horses.find(params[:id])
     @horse.destroy
     redirect_to horses_path, notice: "馬を削除しました。", status: :see_other
   end
 
   private
+
+  def set_horse
+    @horse = current_user.horses.find(params[:id])
+  end
 
   def horse_params
     params.require(:horse).permit(:name, :color_id, :personality, :memo)
