@@ -15,6 +15,11 @@
   </div>
 
   <div>
+    <%= f.label :color_id, "毛色" %>
+    <%= f.collection_select :color_id, Color.all, :id, :name, include_blank: "選択してください" %>
+  </div>
+
+  <div>
     <%= f.label :personality, "性格" %>
     <%= f.text_area :personality %>
   </div>
