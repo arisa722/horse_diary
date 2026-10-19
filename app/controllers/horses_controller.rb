@@ -23,6 +23,16 @@ class HorsesController < ApplicationController
   end
 
   def edit
+    @horse = current_user.horses.find(params[:id])
+  end
+
+  def update
+    @horse = current_user.horses.find(params[:id])
+    if @horse.update(horse_params)
+      redirect_to horse_path(@horse), notice: "馬の情報を更新しました。"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
