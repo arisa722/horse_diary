@@ -1,0 +1,7 @@
+<h1>馬の編集</h1>
+
+<%= render "form", horse: @horse %>
+
+<%= link_to "戻る", horse_path(@horse) %>
+
+<%= button_to "削除", horse_path(@horse), method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
