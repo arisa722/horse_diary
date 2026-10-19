@@ -1,4 +1,6 @@
 class HorsesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -6,6 +8,7 @@ class HorsesController < ApplicationController
   end
 
   def new
+    @horse = Horse.new
   end
 
   def edit
