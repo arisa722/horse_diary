@@ -6,6 +6,7 @@ class HorsesController < ApplicationController
   end
 
   def show
+    @horse = current_user.horses.find(params[:id])
   end
 
   def new
