@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "homes#top"
+  get "home", to: "homes#home"
   resources :horses
   resources :instructors
   resources :lessons
