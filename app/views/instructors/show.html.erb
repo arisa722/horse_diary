@@ -7,5 +7,17 @@
 <%= simple_format(@instructor.memo) %>
 
 <%= link_to "編集", edit_instructor_path(@instructor) %>
+
+<p><%= @instructor.lessons.count %>回 レッスンを担当してもらいました</p>
+
+<h2><%= @instructor.name %>さんとのレッスン</h2>
+<% if @instructor.lessons.empty? %>
+    <p>まだレッスンはありません</p>
+<% else %>
+    <% @instructor.lessons.order(date: :desc).each do |lesson| %>
+            <p><%= link_to lesson.date.strftime("%Y年%m月%d日"), lesson_path(lesson) %></p>
+    <% end %>
+<% end %>
+
 <%= link_to "戻る", instructors_path %>
 
