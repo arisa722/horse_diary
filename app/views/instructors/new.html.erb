@@ -1,2 +1,5 @@
-<h1>Instructors#new</h1>
-<p>Find me in app/views/instructors/new.html.erb</p>
+<h1>講師の登録</h1>
+
+<%= render 'form', instructor: @instructor %>
+
+<%= link_to "戻る", instructors_path %>
