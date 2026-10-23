@@ -4,6 +4,9 @@ class LessonsController < ApplicationController
 
   def index
     @lessons = current_user.lessons.order(date: :desc)
+    if params[:horse_name].present?
+      @lessons = @lessons.joins(:horse).where("horses.name LIKE ?", "%#{params[:horse_name]}%")
+    end
   end
 
   def show

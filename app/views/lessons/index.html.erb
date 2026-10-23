@@ -2,8 +2,20 @@
 
 <%= link_to "レッスンを記録する", new_lesson_path %>
 
+<%= form_with url: lessons_path, method: :get do |f| %>
+  <%= f.label :horse_name, "馬の名前で検索" %>
+  <%= f.text_field :horse_name, value: params[:horse_name], placeholder: "馬の名前で検索" %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<p><%= @lessons.count %>件のレッスン</p>
+
 <% if @lessons.empty? %>
-    <p>まだレッスンが記録されていません。</p>
+    <% if params[:horse_name].present? %>
+        <p> <%= params[:horse_name] %>とのレッスンは見つかりませんでした。</p>
+    <% else %>
+        <p>まだレッスンが記録されていません</p>
+    <% end %>
 <% else %>
     <% @lessons.each do |lesson| %>
         <div>
