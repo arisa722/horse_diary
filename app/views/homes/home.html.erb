@@ -1,0 +1,24 @@
+<h1><%= current_user.nickname %>さん</h1>
+
+<%= link_to "レッスンを記録する", new_lesson_path %>
+
+<h2>前回決めた目標</h2>
+<% if @last_lesson&.next_goal.present? %>
+    <%= simple_format(@last_lesson.next_goal) %>
+<% else %>
+    <p>目標はありません</p>
+<% end %>
+
+<h2>最近のレッスン</h2>
+<% if @recent_lessons.empty? %>
+    <p>まだレッスンは記録されていません</p>
+<% else %>
+    <% @recent_lessons.each do |lesson| %>
+    <p>
+        <%= link_to lesson.date.strftime("%m月%d日"), lesson_path(lesson) %>
+        <%= lesson.horse&.name || "未登録" %>
+    </p>
+    <% end %>
+<% end %>
+
+<%= link_to "もっと見る", lessons_path %>
