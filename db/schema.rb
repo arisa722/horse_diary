@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_23_043129) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_23_044011) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -51,6 +51,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_23_043129) do
     t.index ["user_id"], name: "index_instructors_on_user_id"
   end
 
+  create_table "lesson_categories", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_lesson_categories_on_category_id"
+    t.index ["lesson_id", "category_id"], name: "index_lesson_categories_on_lesson_id_and_category_id", unique: true
+    t.index ["lesson_id"], name: "index_lesson_categories_on_lesson_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "horse_id"
@@ -84,6 +94,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_23_043129) do
   add_foreign_key "horses", "colors"
   add_foreign_key "horses", "users"
   add_foreign_key "instructors", "users"
+  add_foreign_key "lesson_categories", "categories"
+  add_foreign_key "lesson_categories", "lessons"
   add_foreign_key "lessons", "horses"
   add_foreign_key "lessons", "instructors"
   add_foreign_key "lessons", "users"
