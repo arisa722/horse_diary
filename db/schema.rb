@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_23_021334) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_23_044011) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
+  end
 
   create_table "colors", force: :cascade do |t|
     t.string "name", null: false
@@ -44,6 +51,32 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_23_021334) do
     t.index ["user_id"], name: "index_instructors_on_user_id"
   end
 
+  create_table "lesson_categories", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_lesson_categories_on_category_id"
+    t.index ["lesson_id", "category_id"], name: "index_lesson_categories_on_lesson_id_and_category_id", unique: true
+    t.index ["lesson_id"], name: "index_lesson_categories_on_lesson_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "horse_id"
+    t.bigint "instructor_id"
+    t.date "date", null: false
+    t.text "instruction"
+    t.text "impression"
+    t.text "next_goal"
+    t.boolean "is_public", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["horse_id"], name: "index_lessons_on_horse_id"
+    t.index ["instructor_id"], name: "index_lessons_on_instructor_id"
+    t.index ["user_id"], name: "index_lessons_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -61,4 +94,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_23_021334) do
   add_foreign_key "horses", "colors"
   add_foreign_key "horses", "users"
   add_foreign_key "instructors", "users"
+  add_foreign_key "lesson_categories", "categories"
+  add_foreign_key "lesson_categories", "lessons"
+  add_foreign_key "lessons", "horses"
+  add_foreign_key "lessons", "instructors"
+  add_foreign_key "lessons", "users"
 end

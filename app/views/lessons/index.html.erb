@@ -1,0 +1,20 @@
+<h1>レッスン記録</h1>
+
+<%= link_to "レッスンを記録する", new_lesson_path %>
+
+<% if @lessons.empty? %>
+    <p>まだレッスンが記録されていません。</p>
+<% else %>
+    <% @lessons.each do |lesson| %>
+        <div>
+            <p><%= link_to lesson.date.strftime("%Y年%m月%d日"), lesson_path(lesson) %></p>
+            <p><%= lesson.horse&.name || "未登録" %></p>
+            <p><%= lesson.instructor&.name || "未登録" %></p>
+            <p>
+                <% lesson.categories.each do |category| %>
+                    <span><%= category.name %></span>
+                <% end %>
+            </p>
+        </div>
+    <% end %>
+<% end %>

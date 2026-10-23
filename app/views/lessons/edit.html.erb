@@ -1,0 +1,7 @@
+<h1>レッスン記録の編集</h1>
+
+<%= render "form", lesson: @lesson %>
+
+<%= link_to "戻る", lesson_path(@lesson) %>
+
+<%= button_to "削除", lesson_path(@lesson), method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>

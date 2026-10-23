@@ -13,3 +13,9 @@ colors = %w[鹿毛 黒鹿毛 青鹿毛 青毛 栗毛 栃栗毛 芦毛 白毛]
 colors.each do |name|
     Color.find_or_create_by!(name: name)
 end
+
+categories = %w[並足 軽速歩 速歩 駈歩 障害 馬場 馬具講習 座学 その他]
+
+categories.each do |name|
+    Category.find_or_create_by!(name: name)
+end
