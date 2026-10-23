@@ -1,0 +1,49 @@
+<%= form_with model: lesson do |f| %>
+    <% if lesson.errors.any? %>
+        <ul>
+            <% lesson.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <div>
+        <%= f.label :date, "日付" %>
+        <%= f.date_field :date %>
+    </div>
+
+    <div>
+        <p>馬</p>
+        <%= f.collection_radio_buttons :horse_id, current_user.horses, :id, :name %>
+    </div>
+
+    <div>
+        <p>講師</p>
+        <%= f.collection_radio_buttons :instructor_id, current_user.instructors, :id, :name %>
+    </div>
+
+    <div>
+        <p>レッスン内容</p>
+        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+    </div>
+
+    <div>
+        <%= f.label :instruction, "先生からの指導" %>
+        <%= f.text_area :instruction %>
+    </div>
+
+    <div>
+        <%= f.label :impression, "感想" %>
+        <%= f.text_area :impression %>
+    </div>
+
+    <div>
+        <%= f.label :next_goal, "次回の目標" %>
+        <%= f.text_area :next_goal %>
+    </div>
+
+    <%= f.submit "保存" %>
+<% end %>
+
+
+
