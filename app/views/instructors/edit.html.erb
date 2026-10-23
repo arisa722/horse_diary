@@ -1,0 +1,8 @@
+<h1>講師の編集</h1>
+
+<%= render 'form', instructor: @instructor %>
+
+<%= link_to "戻る", instructors_path %>
+
+<%= button_to "削除", instructor_path(@instructor), method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
+

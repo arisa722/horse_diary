@@ -1,0 +1,26 @@
+<%= form_with model: instructor do |f| %>
+    <% if instructor.errors.any? %>
+        <ul>
+            <% instructor.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <div>
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name %>
+    </div>
+
+    <div>
+    <%= f.label :feature, "指導の特徴" %>
+    <%= f.text_area :feature %>
+    </div>
+
+    <div>
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_area :memo %>
+    </div>
+
+  <%= f.submit "保存" %>
+<% end %>

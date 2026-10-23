@@ -1,0 +1,11 @@
+<h1>講師の一覧</h1>
+
+<%= link_to "講師の登録", new_instructor_path %>
+
+<% if @instructors.empty? %>
+    <p>登録されている講師はいません。</p>
+<% else %>
+    <% @instructors.each do |instructor| %>
+        <p><%= link_to instructor.name, instructor_path(instructor) %></p>
+    <% end %>
+<% end %>

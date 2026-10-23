@@ -1,0 +1,11 @@
+<h1><%= @instructor.name %></h1>
+
+<h2>指導の特徴</h2>
+<%= simple_format(@instructor.feature) %>
+
+<h2>メモ</h2>
+<%= simple_format(@instructor.memo) %>
+
+<%= link_to "編集", edit_instructor_path(@instructor) %>
+<%= link_to "戻る", instructors_path %>
+
