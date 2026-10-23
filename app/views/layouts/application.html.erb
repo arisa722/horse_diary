@@ -34,5 +34,12 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <% if user_signed_in? %>
+      <nav>
+        <%= link_to "ホーム", home_path %> |
+        <%= link_to "記録", lessons_path %> |
+        <%= link_to "馬・講師", horses_path %>
+      </nav>
+    <% end %>
   </body>
 </html>
