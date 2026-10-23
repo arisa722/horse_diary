@@ -9,4 +9,16 @@
 <%= simple_format(@horse.memo) %>
 
 <%= link_to "編集", edit_horse_path(@horse) %>
+
+<p><%= @horse.lessons.count %>回 一緒にレッスンしたよ</p>
+
+<h2><%= @horse.name %>とのレッスン</h2>
+<% if @horse.lessons.empty? %>
+    <p>まだレッスンはありません</p>
+<% else %>
+    <% @horse.lessons.order(date: :desc).each do |lesson| %>
+            <p><%= link_to lesson.date.strftime("%Y年%m月%d日"), lesson_path(lesson) %></p>
+    <% end %>
+<% end %>
+
 <%= link_to "一覧に戻る", horses_path %>
