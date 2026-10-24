@@ -11,7 +11,9 @@
 
 ## 公開URL
 
-<!-- デプロイ後に記載する -->
+https://horse-diary.onrender.com
+
+※ 無料プランのため、しばらくアクセスがないと休止します。初回の表示に1分ほどかかる場合があります。
 
 ## 成果物（上流工程）
 
@@ -36,7 +38,8 @@
 - Ruby on Rails 8.1
 - PostgreSQL
 - importmap
-<!-- デプロイ先（例：Render） -->
+- Render（デプロイ）
+- Neon（本番のデータベース）
 
 ## 工夫した点
 
