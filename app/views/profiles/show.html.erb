@@ -1,0 +1,10 @@
+<h1>マイページ</h1>
+
+<p>ニックネーム：<%= @user.nickname %></p>
+
+<p>自己紹介</p>
+<%= simple_format(@user.introduction) %>
+
+<p>レッスン記録：<%= @user.lessons.count %> 件</p>
+
+<%= link_to "プロフィールを編集", edit_profile_path %>
