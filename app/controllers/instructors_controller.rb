@@ -1,6 +1,6 @@
 class InstructorsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_instructor, only: [:show, :edit, :update, :destroy]
+  before_action :set_instructor, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @instructors = current_user.instructors
@@ -47,5 +47,4 @@ class InstructorsController < ApplicationController
   def instructor_params
     params.require(:instructor).permit(:name, :feature, :memo)
   end
-
 end

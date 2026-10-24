@@ -1,6 +1,6 @@
 class HorsesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_horse, only: [:show, :edit, :update, :destroy]
+  before_action :set_horse, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @horses = current_user.horses

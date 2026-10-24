@@ -6,6 +6,6 @@ class CreateLessonCategories < ActiveRecord::Migration[8.1]
 
       t.timestamps
     end
-    add_index :lesson_categories, [:lesson_id, :category_id], unique: true
+    add_index :lesson_categories, [ :lesson_id, :category_id ], unique: true
   end
 end
