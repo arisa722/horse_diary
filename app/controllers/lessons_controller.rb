@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+  before_action :set_lesson, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @lessons = current_user.lessons.order(date: :desc)
@@ -50,5 +50,4 @@ class LessonsController < ApplicationController
   def lesson_params
     params.require(:lesson).permit(:horse_id, :instructor_id, :date, :instruction, :impression, :next_goal, category_ids: [])
   end
-
 end
