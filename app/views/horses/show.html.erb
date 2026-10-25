@@ -1,5 +1,9 @@
 <h1><%= @horse.name %></h1>
 
+<% if @horse.image.attached? %>
+  <%= image_tag @horse.image, width: 300 %>
+<% end %>
+
 <p>毛色：<%= @horse.color&.name %></p>
 
 <h2>性格</h2>

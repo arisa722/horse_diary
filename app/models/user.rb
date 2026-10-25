@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :horses, dependent: :destroy
   has_many :instructors, dependent: :destroy
   has_many :lessons, dependent: :destroy
+  has_one_attached :icon
 
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :introduction, length: { maximum: 100 }

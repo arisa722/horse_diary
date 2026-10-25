@@ -27,5 +27,10 @@
     <%= f.text_area :memo %>
   </div>
 
+  <div>
+    <%= f.label :image, "写真" %>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+
   <%= f.submit "保存" %>
 <% end %>

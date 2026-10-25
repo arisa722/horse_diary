@@ -45,6 +45,6 @@ class HorsesController < ApplicationController
   end
 
   def horse_params
-    params.require(:horse).permit(:name, :color_id, :personality, :memo)
+    params.require(:horse).permit(:name, :color_id, :personality, :memo, :image)
   end
 end
