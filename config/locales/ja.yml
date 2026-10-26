@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      horse: 馬
+      instructor: 講師
+      lesson: レッスン記録
+    attributes:
+      user:
+        nickname: ニックネーム
+        introduction: 自己紹介
+      horse:
+        name: 名前
+      instructor:
+        name: 名前
+      lesson:
+        date: 日付
