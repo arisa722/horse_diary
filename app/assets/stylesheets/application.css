@@ -226,3 +226,25 @@ h2 {
   border-radius: 50%;
   object-fit: cover;
 }
+
+.chips input {
+  position: absolute;
+  opacity: 0;
+}
+
+.chips label {
+  display: inline-block;
+  margin: 0 6px 8px 0;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.chips input:checked + label {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
