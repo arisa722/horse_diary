@@ -1,19 +1,26 @@
 <h1><%= @lesson.date.strftime("%Y年%m月%d日") %></h1>
 
-<p>馬: <%= @lesson.horse&.name %></p>
-<p>講師: <%= @lesson.instructor&.name %></p>
-<p> <% @lesson.categories.each do |category| %>
-        <span><%= category.name %></span>
-    <% end %>
-</p>
+<div class="card">
+  <div><strong><%= @lesson.horse&.name || "未登録" %></strong></div>
+  <div>講師：<%= @lesson.instructor&.name || "未登録" %></div>
+</div>
+
+<div>
+  <% @lesson.categories.each do |category| %>
+    <span class="tag"><%= category.name %></span>
+  <% end %>
+</div>
 
 <h2>先生からの指導</h2>
 <%= simple_format(@lesson.instruction) %>
 
 <h2>感想</h2>
 <%= simple_format(@lesson.impression) %>
-<h2>次回の目標</h2>
-<%= simple_format(@lesson.next_goal) %>
 
-<%= link_to "編集", edit_lesson_path(@lesson) %>
+<div class="goal-card">
+    <p>次回の目標</p>
+     <%= simple_format(@lesson.next_goal) %>
+</div>
+
+<%= link_to "編集", edit_lesson_path(@lesson), class: "btn" %>
 <%= link_to "一覧に戻る", lessons_path %>
