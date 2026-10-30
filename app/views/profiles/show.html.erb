@@ -1,14 +1,15 @@
 <h1>マイページ</h1>
 
 <% if @user.icon.attached? %>
-  <%= image_tag @user.icon, width: 100 %>
+  <%= image_tag @user.icon, class: "avatar" %>
 <% end %>
+<div class="card">
+  <p>ニックネーム：<%= @user.nickname %></p>
 
-<p>ニックネーム：<%= @user.nickname %></p>
+  <p>自己紹介</p>
+  <%= simple_format(@user.introduction) %>
 
-<p>自己紹介</p>
-<%= simple_format(@user.introduction) %>
+  <p>レッスン記録：<%= @user.lessons.count %> 件</p>
+</div>
 
-<p>レッスン記録：<%= @user.lessons.count %> 件</p>
-
-<%= link_to "プロフィールを編集", edit_profile_path %>
+<%= link_to "プロフィールを編集", edit_profile_path, class: "btn" %>
