@@ -14,11 +14,15 @@
 
     <div class="chips">
         <p>馬</p>
+        <%= f.radio_button :horse_id, "" %>
+        <%= f.label :horse_id, "なし", value: "" %>
         <%= f.collection_radio_buttons :horse_id, current_user.horses, :id, :name %>
     </div>
 
-    <div class="chips">
+     <div class="chips">
         <p>講師</p>
+        <%= f.radio_button :instructor_id, "" %>
+        <%= f.label :instructor_id, "なし", value: "" %>
         <%= f.collection_radio_buttons :instructor_id, current_user.instructors, :id, :name %>
     </div>
 
