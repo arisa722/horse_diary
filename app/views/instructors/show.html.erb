@@ -6,7 +6,7 @@
 <h2>メモ</h2>
 <%= simple_format(@instructor.memo) %>
 
-<%= link_to "編集", edit_instructor_path(@instructor) %>
+<%= link_to "編集", edit_instructor_path(@instructor), class: "btn" %>
 
 <p><%= @instructor.lessons.count %>回 レッスンを担当してもらいました</p>
 
@@ -15,7 +15,14 @@
     <p>まだレッスンはありません</p>
 <% else %>
     <% @instructor.lessons.order(date: :desc).each do |lesson| %>
-            <p><%= link_to lesson.date.strftime("%Y年%m月%d日"), lesson_path(lesson) %></p>
+         <%= link_to lesson_path(lesson), class: "card" do %>
+        <div><strong><%= lesson.date.strftime("%Y年%m月%d日") %></strong></div>
+        <div>
+          <% lesson.categories.each do |category| %>
+            <span class="tag"><%= category.name %></span>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
 <% end %>
 

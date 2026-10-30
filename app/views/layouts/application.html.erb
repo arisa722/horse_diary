@@ -17,6 +17,9 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -25,19 +28,27 @@
 
   <body>
     <% if user_signed_in? %>
-      <p><%= link_to "#{current_user.nickname}さん", profile_path %></p>
-      <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
+      <header class="header">
+      <%= link_to "#{current_user.nickname}さん", profile_path %>
+      <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %>
+      </header>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+
+    <main>
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+      <%= yield %>
+    </main>
+
     <% if user_signed_in? %>
-      <nav>
-        <%= link_to "ホーム", home_path %> |
-        <%= link_to "記録", lessons_path %> |
+      <nav class="tab-bar">
+        <%= link_to "ホーム", home_path %>
+        <%= link_to "記録", lessons_path %>
         <%= link_to "馬・講師", horses_path %>
       </nav>
     <% end %>

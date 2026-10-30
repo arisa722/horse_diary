@@ -1,23 +1,30 @@
 <h1><%= current_user.nickname %>さん</h1>
 
-<%= link_to "レッスンを記録する", new_lesson_path %>
+<%= link_to "レッスンを記録する", new_lesson_path, class: "btn" %>
 
-<h2>前回決めた目標</h2>
-<% if @last_lesson&.next_goal.present? %>
-    <%= simple_format(@last_lesson.next_goal) %>
-<% else %>
-    <p>目標はありません</p>
-<% end %>
+<div class="goal-card">
+    <p>前回決めた目標</p>
+    <% if @last_lesson&.next_goal.present? %>
+        <%= simple_format(@last_lesson.next_goal) %>
+    <% else %>
+        <p>目標はありません</p>
+    <% end %>
+</div>
 
 <h2>最近のレッスン</h2>
 <% if @recent_lessons.empty? %>
     <p>まだレッスンは記録されていません</p>
 <% else %>
     <% @recent_lessons.each do |lesson| %>
-    <p>
-        <%= link_to lesson.date.strftime("%m月%d日"), lesson_path(lesson) %>
-        <%= lesson.horse&.name || "未登録" %>
-    </p>
+        <%= link_to lesson_path(lesson), class: "card" do %>
+            <div><strong><%= lesson.date.strftime("%m月%d日") %></strong>
+            <%= lesson.horse&.name || "未登録" %></div>
+            <div>
+                <% lesson.categories.each do |category| %>
+                <span class="tag"><%= category.name %></span>
+                <% end %>
+            </div>
+        <% end %>
     <% end %>
 <% end %>
 

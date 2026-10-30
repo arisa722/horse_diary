@@ -1,10 +1,12 @@
 <h1>レッスン記録</h1>
 
-<%= link_to "レッスンを記録する", new_lesson_path %>
+<%= link_to "レッスンを記録する", new_lesson_path, class: "btn" %>
 
 <%= form_with url: lessons_path, method: :get do |f| %>
+<div>
   <%= f.label :horse_name, "馬の名前で検索" %>
   <%= f.text_field :horse_name, value: params[:horse_name], placeholder: "馬の名前で検索" %>
+</div>
   <%= f.submit "検索" %>
 <% end %>
 
@@ -18,16 +20,15 @@
     <% end %>
 <% else %>
     <% @lessons.each do |lesson| %>
-        <div>
-            <p><%= link_to lesson.date.strftime("%Y年%m月%d日"), lesson_path(lesson) %></p>
-            <p><%= lesson.horse&.name || "未登録" %></p>
-            <p><%= lesson.instructor&.name || "未登録" %></p>
-            <p>
-                <% lesson.categories.each do |category| %>
-                    <span><%= category.name %></span>
-                <% end %>
-            </p>
-        </div>
+        <%= link_to lesson_path(lesson), class: "card" do %>
+            <div><strong><%= lesson.date.strftime("%Y年%m月%d日") %></strong></div>
+            <div><%= lesson.horse&.name || "未登録" %>　<%= lesson.instructor&.name || "未登録" %></div>
+            <div>
+            <% lesson.categories.each do |category| %>
+            <span class="tag"><%= category.name %></span>
+            <% end %>
+            </div>
+         <% end %>
     <% end %>
 <% end %>
 

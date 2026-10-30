@@ -8,3 +8,270 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+:root {
+    --bg: #F4F1EA;
+    --card: #FFFDF8;
+    --line: #E6E0D4;
+    --text: #2F2D29;
+    --sub: #857F74;
+    --green: #4E6150;
+    --tag: #E4EAE2;
+    --goal: #EFE5D2;
+ }
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    line-height: 1.7;
+ }
+
+main {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 16px 16px 96px;
+}
+
+h1, h2, h3 {
+    font-family: 'Shippori Mincho', serif;
+}
+
+a {
+    color: var(--green);
+}
+
+form > div {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    font: inherit;
+}
+
+textarea {
+    min-height: 96px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.header {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout {
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--sub);
+
+}
+
+.notice,
+.alert {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.notice {
+  background: var(--tag);
+  color: var(--green);
+}
+
+.alert {
+  background: #F6E3E1;
+  color: #B9534C;
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+}
+
+.tab-bar a {
+  flex: 1;
+  padding: 14px 0;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.card {
+    display: block;
+    margin-bottom: 12px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--card);
+    color: var(--text);
+    text-decoration: none;
+}
+
+.tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--tag);
+  color: var(--green);
+  font-size: 12px;
+}
+
+.btn {
+  display: block;
+  margin-bottom: 20px;
+  padding: 14px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.goal-card {
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: var(--goal);
+}
+
+.switch {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--line);
+}
+
+.switch a,
+.switch span {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 999px;
+  color: var(--sub);
+  text-align: center;
+  text-decoration: none;
+}
+
+.switch .active {
+  background: var(--card);
+  color: var(--text);
+  font-weight: 700;
+}
+
+h2 {
+  margin: 24px 0 8px;
+  font-size: 18px;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  border-radius: 16px;
+}
+
+.avatar {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chips input {
+  position: absolute;
+  opacity: 0;
+}
+
+.chips label {
+  display: inline-block;
+  margin: 0 6px 8px 0;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.chips input:checked + label {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
+
+.top {
+  padding-top: 48px;
+  text-align: center;
+}
+
+.top h1 {
+  margin-bottom: 8px;
+  font-size: 40px;
+}
+
+.top p {
+  margin-bottom: 40px;
+  color: var(--sub);
+}
+
+.btn-outline {
+  display: block;
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  color: var(--green);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
