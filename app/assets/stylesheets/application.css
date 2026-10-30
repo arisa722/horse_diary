@@ -82,3 +82,62 @@ input[type="submit"] {
   font-weight: 700;
   cursor: pointer;
 }
+
+.header {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout {
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--sub);
+
+}
+
+.notice,
+.alert {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.notice {
+  background: var(--tag);
+  color: var(--green);
+}
+
+.alert {
+  background: #F6E3E1;
+  color: #B9534C;
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+}
+
+.tab-bar a {
+  flex: 1;
+  padding: 14px 0;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+  text-decoration: none;
+}
