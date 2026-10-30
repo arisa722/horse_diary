@@ -1,13 +1,19 @@
-<h1>講師の一覧</h1>
+<h1>馬・講師</h1>
 
-<p><%= link_to "馬", horses_path %> | 講師</p>
+<div class="switch">
+  <%= link_to "馬", horses_path %>
+  <span class="active">講師</span>
+</div>
 
-<%= link_to "講師の登録", new_instructor_path %>
+<%= link_to "講師を登録", new_instructor_path, class: "btn" %>
 
 <% if @instructors.empty? %>
-    <p>登録されている講師はいません。</p>
+  <p>登録されている講師はいません。</p>
 <% else %>
-    <% @instructors.each do |instructor| %>
-        <p><%= link_to instructor.name, instructor_path(instructor) %></p>
+  <% @instructors.each do |instructor| %>
+    <%= link_to instructor_path(instructor), class: "card" do %>
+      <div><strong><%= instructor.name %></strong></div>
+      <div><%= instructor.lessons.count %>回 レッスン</div>
     <% end %>
+  <% end %>
 <% end %>

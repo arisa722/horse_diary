@@ -1,16 +1,19 @@
-<h1>馬の一覧</h1>
+<h1>馬・講師</h1>
 
-<p>馬 | <%= link_to "講師", instructors_path %></p>
+<div class="switch">
+  <span class="active">馬</span>
+  <%= link_to "講師", instructors_path %>
+</div>
 
-<%= link_to "馬を登録", new_horse_path %>
+<%= link_to "馬を登録", new_horse_path, class: "btn" %>
 
 <% if @horses.empty? %>
   <p>馬が登録されていません。</p>
 <% else %>
   <% @horses.each do |horse| %>
-    <p>
-      <%= link_to horse.name, horse_path(horse) %>
-      <%= horse.color&.name %>
-    </p>
+    <%= link_to horse_path(horse), class: "card" do %>
+      <div><strong><%= horse.name %></strong></div>
+      <div><%= horse.color&.name %>　<%= horse.lessons.count %>回 レッスン</div>
+    <% end %>
   <% end %>
 <% end %>
