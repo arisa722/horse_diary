@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
   root "homes#top"
   get "home", to: "homes#home"
   resources :horses
   resources :instructors
   resources :lessons
   resource :profile, only: [ :show, :edit, :update ]
+  post "guest_login", to: "guest_sessions#create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
