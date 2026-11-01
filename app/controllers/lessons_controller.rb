@@ -13,7 +13,7 @@ class LessonsController < ApplicationController
   end
 
   def new
-    @lesson = Lesson.new(date: Date.today)
+    @lesson = Lesson.new(date: Date.current)
   end
 
   def create
