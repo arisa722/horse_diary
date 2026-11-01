@@ -37,13 +37,14 @@ https://horse-diary.onrender.com
 
 ## 使用技術
 
-- Ruby3.4
-- Ruby on Rails8.1
+- Ruby 3.4
+- Ruby on Rails 8.1
 - HTML/CSS
 - PostgreSQL
 - Render（デプロイ）
 - Neon（本番のデータベース）
-- GitHub Actions（CI：テスト・RuboCop・セキュリティチェック）
+- Active Storage・Cloudinary（画像の保存）
+- GitHub Actions（CI：RuboCop・セキュリティチェック）
 
 ## 工夫した点
 
